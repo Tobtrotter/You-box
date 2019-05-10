@@ -1,67 +1,73 @@
+<?php
+
+session_start(); // On utilise les sessions
+
+// On se connecte a la base de données
+require 'conf/config-sql.php';
+
+
+if(!empty($_POST)){
+
+   $errors = [];
+
+
+  foreach($_POST as $key => $value){
+    $post[$key] = trim(strip_tags($value));
+  }
+
+  if(strlen($post['input_lastname']) < 2){
+    $errors[] = 'Votre nom doit comporter au moins 2 caractères';
+  }
+  if(strlen($post['input_firstname']) < 2){
+    $errors[] = 'Votre prénom doit comporter au moins 2 caractères';
+  }
+  if(!filter_validate($post['input_email'], FILTER_VALIDATE_EMAIL)){
+    $errors[] = 'Votre adresse email est invalide';
+  }
+
+  if(strlen($post['input_password']) < 8){
+    $errors[] = 'Votre mot de passe doit comporter au moins 8 caractères';
+  }
+  elseif($post['input_password'] != $post['input_password_conf']){
+    $errors[] = 'Votre mot de passe et sa confirmation ne correspondent pas';
+  }
+
+  // On compte les erreurs et s'il n'y en a pas, le formulaire est valide
+  if(count($errors) === 0){
+
+    // sauvegarder l'utilisateur en base de données
+
+    // On préparer la sauvegarde
+    $result = $bdd->prepare('INSERT INTO users (lastname,firstname,email,password) VALUES(:param_lastname,:param_firstname,:param_email,:param_password)');
+
+    $result->bindValue(':param_lastname', $post['input_lastname']);
+    $result->bindValue(':param_firstname', $post['input_firstname']);
+    $result->bindValue(':param_email', $post['input_email']);
+    $result->bindValue(':param_password', password_hash($post['input_password'], PASSWORD_DEFAULT));
+
+    // On sauvegarde
+    if($result->execute()){
+
+      $_SESSION['user'] = [
+        'id'        => $bdd->lastInsertId(), // Permet de connaitre l'id de l'utilisateur qu'on vient tout juste d'insérer
+        'firstname' => $post['input_firstname'],
+        'lastname'  => $post['input_lastname'],
+      ];
+
+      //header('Location: mapage_de_destination_des_questionnaires_deYann&Maureen.php');
+    }
+  }
+
+
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>YOU BOX</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>    
-  </head>
-  <body>
-    
-    <nav class="navbar navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container d-flex align-items-stretch">
-          <div class="col-3 d-flex align-items-center">
-            <a href="index.html"><img src="images/logo-you.png" class="navbar-brand-logo"></a>
-          </div>
-          <div class="col-9 d-flex align-items-center text-right">
-            <ul class="ftco-social mt-2 mr-3">
-              
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-            </ul>
-
-            <button class="navbar-toggler d-flex align-items-center" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="pt-1 mr-1">Menu</span> <span class="oi oi-menu"></span>
-            </button>
-          </div>
-
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link">Nos Box</a></li>
-            <li class="nav-item"><a href="my-account.html" class="nav-link">Mon Compte</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- END nav -->
-    
-
+<?php include '_partials/head.php';?>
+<body>
+   <?php include '_partials/menu.php';?>
 
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -72,6 +78,14 @@
             <div class="col-4" id="form">
               <form method="post">
                 <p>Veuillez remplir ce formulaire pour vous créer un compte</p>
+
+                <?php
+                  if(isset($errors) && count($errors) > 0){
+
+                    echo '<p class="text-danger">'.implode('<br>', $errors);
+                  }
+                ?>
+
                 <div class="form-group">
                   <label for="formGroupExampleInput">Nom</label>
                   <input type="text" name="input_lastname" class="form-control" id="formGroupExampleInput" placeholder="Nom">
@@ -85,12 +99,12 @@
                   <input type="email" name="input_email" class="form-control" id="formGroupExampleInput" placeholder="Email">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Mot de passe</label>
+                  <label for="exampleInputPassword">Mot de passe</label>
                   <input type="password" name="input_password" class="form-control" id="exampleInputPassword" placeholder="Mot de passe">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Confirmation de mot de passe</label>
-                  <input type="password" name="input_password" class="form-control" id="exampleInputPassword" placeholder="Confirmation de mot de passe">
+                  <label for="exampleInputPasswordConf">Confirmation de mot de passe</label>
+                  <input type="password" name="input_password_conf" class="form-control" id="exampleInputPasswordConf" placeholder="Confirmation de mot de passe">
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary mb-2">Créer mon compte</button>
@@ -102,12 +116,7 @@
             </div>
           </div>
         </div>
-      </div>
-
-
-
-
-
+      </div>    
 
 <section class="ftco-section ftco-section-parallax bg-secondary ftco-no-pb">
       <div class="parallax-img d-flex align-items-center">

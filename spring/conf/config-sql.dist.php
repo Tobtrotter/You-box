@@ -6,9 +6,9 @@ Cela permet a chacun d'avoir ses informations de connexions a la base de donnée
 */
 
 
-$dbname = ''; // Nom de la base de données
-$dbuser = ''; // Nom d'utilisateur de la base de données
+$dbname = 'youbox'; // Nom de la base de données
+$dbuser = 'root'; // Nom d'utilisateur de la base de données
 $dbpass = ''; // Mot de passe d'accès a la base de donnée
 
 
-$dbh = new PDO('mysql:host=localhost;dbname='.$dbname.';charset=utf8', $dbuser, $dbpass);
+$bdd = new PDO('mysql:host=localhost;dbname='.$dbname.';charset=utf8', $dbuser, $dbpass);

@@ -1,81 +1,74 @@
 <?php
+session_start(); // On démarre la session pour mémoriser l'utilsateur connecté
 // J'inclus le fichier "config.php" se trouvant dans le dossier "conf"
-require 'conf/config.php';
+require 'conf/config-sql.php';
 
 // Le formulaire est soumis
 if(!empty($_POST)){
 
-  $post = array_map('trim', array_map('strip_tags', $_POST));
+  $errors = [];
+  $errors_user = [];
+  // Permet de nettoyer les données saisies dans le formulaire. C'est à dire, retirer les espaces inutiles au début & à la fin
+  // et retirer l'éventuel code HTML ou PHP qui pourrait représenter d'éventuelles failles de sécurité
+  foreach($_POST as $key => $value){
+    $post[$key] = trim(strip_tags($_POST)); 
+  }
 
-  var_dump($post); die;
+
+  if(!empty($post['input_email'])){
+    $errors[] = 'Votre adresse email doit être complétée';
+  }
+  if(!filter_var($post['input_email'], FILTER_VALIDATE_EMAIL)){
+    $errors[] = 'Votre adresse email est invalide';
+  }
+  if(!empty($post['input_password'])){
+    $errors[] = 'Votre mot de passe doit être complété';
+  }
+
+  if(count($errors) === 0){
+
+    $sql = 'SELECT * FROM users WHERE email = :param_email LIMIT 1';
+    $res = $bdd->prepare($sql);
+
+    $res->bindValue(':param_email', $post['input_email']);
+    $res->execute();
+
+    $user = $res->fetch(); // Permet de récupérer les informations de l'utilisateur existant dans SQL (phpmyadmin)
+
+    if(empty($user)){
+      $errors_user[] = 'Aucun compte existant n\'est associé a cette adresse email';
+    }
+    else {
+      // Ici, on a utilisateur qui correspond a l'adresse email saisie
+
+      // Vérification du mot de passe
+      if(!password_verify($post['input_password'], $user['password'])){
+        $errors_user[] = 'Votre mot de passe est invalide';
+      }
+      else {
+
+        $_SESSION['user'] = [
+          'id'        => $user['id'],
+          'firstname' => $user['firstname'],
+          'lastname'  => $user['lastname'],
+        ];
+        header('Location: my-account.php'); // Redirige vers la page my-account
+      }
+
+    }
+
+
+
+  }
+
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>YOU BOX</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>    
-  </head>
-  <body>
-    
-    <nav class="navbar navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container d-flex align-items-stretch">
-          <div class="col-3 d-flex align-items-center">
-            <a href="index.html"><img src="images/logo-you.png" class="navbar-brand-logo"></a>
-          </div>
-          <div class="col-9 d-flex align-items-center text-right">
-            <ul class="ftco-social mt-2 mr-3">
-              
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-            </ul>
-
-            <button class="navbar-toggler d-flex align-items-center" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="pt-1 mr-1">Menu</span> <span class="oi oi-menu"></span>
-            </button>
-          </div>
-
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link">Nos Box</a></li>
-            <li class="nav-item"><a href="my-account.html" class="nav-link">Mon Compte</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- END nav -->
-    
-
-
+<?php include '_partials/head.php';?>
+<body>
+   <?php include '_partials/menu.php';?>
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <br>
@@ -85,6 +78,15 @@ if(!empty($_POST)){
             <div class="col-4" id="form">
               <form method="post">
                 <p>Veuillez remplir ce formulaire pour vous connecter</p>
+                
+                <?php
+                  if(isset($errors) && count($errors) > 0){
+
+                    echo '<p class="text-danger">'.implode('<br>', $errors);
+                  }
+                ?>
+
+                
                 <div class="form-group">
                   <label for="formGroupExampleInput">Email</label>
                   <input type="email" name="input_email" class="form-control" id="formGroupExampleInput" placeholder="Email">
@@ -97,14 +99,13 @@ if(!empty($_POST)){
                   <button type="submit" class="btn btn-primary mb-2">Me connecter</button>
                 </div>
                 <div class="form-group">
-                  <a href="my-account.html" class="btn btn-primary mb-2">Je n'ai pas de compte ?</a>
+                  <a href="my-account.php" class="btn btn-primary mb-2">Je n'ai pas de compte ?</a>
                 </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-
 
 
 
@@ -133,94 +134,7 @@ if(!empty($_POST)){
       </div>
     </section>
 
+<?php include '_partials/footer.php';?>
 
-
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row md-12">
-          <div class="col-md-6">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Spring Church</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-
-            </div>
-
-          </div>
-                      <div class="col-md-6">
-              <div class="row no-gutters">
-                <div class="col-md-6 ftco-animate">
-                  <a href="images/image_1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_1.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                      <span class="icon-instagram"></span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-6 ftco-animate">
-                  <a href="images/image_2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_2.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                      <span class="icon-instagram"></span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-6 ftco-animate">
-                  <a href="images/image_3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_3.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                      <span class="icon-instagram"></span>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-6 ftco-animate">
-                  <a href="images/image_4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_4.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                      <span class="icon-instagram"></span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            </div>
-      </div>
-
-
-          <br>
-
-
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p> You Box &copy;<script>document.write(new Date().getFullYear());</script> </p>
-          </div>
-        </div>
-    </footer>
-    
-  
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
-  </body>
+</body>
 </html>

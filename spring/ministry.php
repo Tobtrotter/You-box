@@ -1,73 +1,76 @@
+<?php
+
+session_start();
+
+require 'conf/config-sql.php';
+  
+if(empty($_SESSION['user'])){
+  // Je redirige l'utilisateur vers la page d'accueil s'il n'est pas connecté
+  header('Location: index.php'); 
+  die; // On arrete tout pour être sur qu'il ne peut pas aller plus loin
+}
+
+
+
+// Permet de récuperer TOUTES les informations depuis la base de données
+$sql = 'SELECT * FROM users WHERE id = :param_id';
+$res = $bdd->prepare($sql);
+$res->bindValue(':param_id', $_SESSION['user']['id'], PDO::PARAM_INT);
+$res->execute();
+
+$my_user = $res->fetch();
+if(empty($my_user)){ 
+  // En théorie, peu de chance d'arriver mais au cas ou...
+  // On trouve pas d'utilisateur ayant un ID correspondant
+  header('Location: index.php');
+}
+
+
+// Pour acceder aux infos de mon utilisateur dans cette page 
+
+echo $my_user['email'];
+echo $my_user['firstname'];
+
+
+// Pour acceder aux infos de mon utilisateur stockée en session 
+echo $_SESSION['user']['firstname']; 
+echo $_SESSION['user']['email']; 
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>YOU BOX</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i" rel="stylesheet">
+<?php include '_partials/head.php';?>
+ <body>
+   <?php include '_partials/menu.php';?>
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>    
-  </head>
-  <body>
-    
-    <nav class="navbar navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container d-flex align-items-stretch">
-          <div class="col-3 d-flex align-items-center">
-            <a href="index.html"><img src="images/logo-you.png" class="navbar-brand-logo"></a>
-          </div>
-          <div class="col-9 d-flex align-items-center text-right">
-            <ul class="ftco-social mt-2 mr-3">
-              
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-            </ul>
-
-            <button class="navbar-toggler d-flex align-items-center" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="pt-1 mr-1">Menu</span> <span class="oi oi-menu"></span>
-            </button>
-          </div>
-
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link">Ma formule</a></li>
-            <li class="nav-item"><a href="my-account.html" class="nav-link">Mon Compte</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- END nav -->
-    
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+   <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-0">Bienvenue XXX</h1>
-            <h3 class="subheading mb-4 pb-1">You Box, Votre box culturelle personnalisée</h3>
+            
+            <?php if(!empty($_SESSION['user'])): ?> <!-- utilisateur connecté -->
+            <h1 class="mb-0">You Box</h1>
+            <h3 class="subheading mb-4 pb-3">Votre box culturelle personnalisée</h3>
+
+            <h4 class="subheading small">Bienvenue <?php echo $_SESSION['user']['firstname'];?></h4> 
+
+            <p>
+              <a href="ministry.php" class="btn btn-primary py-3 px-4">Mon compte</a> 
+              <a href="#" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se déconnecter</a>
+            </p>
+            <?php else: ?> <!-- utilisateur non connecté -->
+
+            <h1 class="mb-0">You Box</h1>
+            <h3 class="subheading mb-4 pb-1">Votre box culturelle personnalisée</h3>
+            <p>
+              <a href="#" class="btn btn-primary py-3 px-4">Créer un compte</a> 
+              <a href="#" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
+            </p>
+          <?php endif;?>
+
+
             <div class="mouse">
               <a href="#" class="mouse-icon">
                 <div class="mouse-wheel"><span class="ion-ios-arrow-down"></span></div>
@@ -77,7 +80,35 @@
         </div>
       </div>
     </div>
-		
+
+
+
+   <section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <ul class="ministry-list">
+              <li class="active"><a href="#">Récapitulatif</a></li>
+              <li><a href="#">Mes informations</a></li>
+              <li><a href="#">Missions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-9">
+            <h3 class="mb-4">Mon abonnement</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <ul class="ministry-list my-5">
+              <li><span class="ion-ios-arrow-forward mr-2"></span>Bible classes for all ages</li>
+              <li><span class="ion-ios-arrow-forward mr-2"></span>The Big Oxmox advised her not to do so</li>
+              <li><span class="ion-ios-arrow-forward mr-2"></span>Pointing has no control about</li>
+              <li><span class="ion-ios-arrow-forward mr-2"></span>Separated they live in Bookmarksgrove right</li>
+            </ul>
+            <hr>
+            <h3 class="mb-4 mt-5">The Lord's Army</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
 		<section class="ftco-section">
 			<div class="container">
