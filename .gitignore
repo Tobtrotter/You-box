@@ -27,3 +27,4 @@ Temporary Items
 .apdisk
 spring/_DS_Store
 spring/__MACOSX
+spring/conf/config-sql.php
