@@ -1,10 +1,42 @@
+      
+
+
+
+    <section class="ftco-section ftco-section-parallax bg-secondary ftco-no-pb">
+      <div class="parallax-img d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-10 text-center heading-section heading-section-white heading-section-no-line ftco-animate">
+              <h2>Newsletter</h2>
+              <p>Soyez informé de nos derniers livres reçus et nos box coup de cœur !<br>Inscrivez-vous à notre newseletter mensuelle (Promis, on harcèle pas).</p>
+              <div class="row d-flex justify-content-center mt-4 mb-4">
+                <div class="col-md-7">
+                  <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                      <input type="email" class="form-control" placeholder="Votre adresse mail">
+                      <input type="submit" value="S'inscrire" class="submit px-3">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row md-12">
           <div class="col-md-6">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Spring Church</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <div class="col-12 d-flex align-items-center">
+                 <a href="index.php"><img src="images/logo-you.png" class="navbar-brand-logo" style="  width: 75px;height: 75px;" ></a> 
+                 <p style="padding-top: 25px;">Votre Box culturelle personnalisée uniquement pour vous</p>
+              </div>
+            
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>

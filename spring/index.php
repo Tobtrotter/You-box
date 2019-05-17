@@ -19,15 +19,15 @@
 
             <p>
               <a href="ministry.php" class="btn btn-primary py-3 px-4">Mon compte</a> 
-              <a href="#" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se déconnecter</a>
+              <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se déconnecter</a>
             </p>
             <?php else: ?> <!-- utilisateur non connecté -->
 
             <h1 class="mb-0">You Box</h1>
             <h3 class="subheading mb-4 pb-1">Votre box culturelle personnalisée</h3>
             <p>
-              <a href="#" class="btn btn-primary py-3 px-4">Créer un compte</a> 
-              <a href="#" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
+              <a href="user-add.php" class="btn btn-primary py-3 px-4">Créer un compte</a> 
+              <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
             </p>
           <?php endif;?>
 
@@ -128,9 +128,9 @@
                     </span>
                   </div>
                   <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="mb-4">Passionnée de littérature et de droit, je souhaite être riche.</p>
                     <p class="name">Maureen Sauteur</p>
-                    <span class="position">Member</span>
+                    <span class="position">Chef de Produit</span>
                   </div>
                 </div>
               </div>
@@ -144,7 +144,7 @@
                   <div class="text p-3">
                     <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                     <p class="name">Cécile Dillet</p>
-                    <span class="position">Responsable marketing</span>
+                    <span class="position">Responsable Marketing</span>
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@
                   <div class="text p-3">
                     <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                     <p class="name">Mathilde Tobelem</p>
-                    <span class="position">Graphiste</span>
+                    <span class="position">Graphiste et UX Design</span>
                   </div>
                 </div>
               </div>
@@ -187,32 +187,7 @@
     
     
 		
-		
 
-
-
-    <section class="ftco-section ftco-section-parallax bg-secondary ftco-no-pb">
-      <div class="parallax-img d-flex align-items-center">
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-7 text-center heading-section heading-section-white heading-section-no-line ftco-animate">
-              <h2>Newsletter</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
-              <div class="row d-flex justify-content-center mt-4 mb-4">
-                <div class="col-md-8">
-                  <form action="#" class="subscribe-form">
-                    <div class="form-group d-flex">
-                      <input type="text" class="form-control" placeholder="Enter email address">
-                      <input type="submit" value="Subscribe" class="submit px-3">
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
 
 

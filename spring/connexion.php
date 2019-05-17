@@ -11,17 +11,17 @@ if(!empty($_POST)){
   // Permet de nettoyer les données saisies dans le formulaire. C'est à dire, retirer les espaces inutiles au début & à la fin
   // et retirer l'éventuel code HTML ou PHP qui pourrait représenter d'éventuelles failles de sécurité
   foreach($_POST as $key => $value){
-    $post[$key] = trim(strip_tags($_POST)); 
+    $post[$key] = trim(strip_tags($value)); 
   }
 
 
-  if(!empty($post['input_email'])){
+  if(empty($post['input_email'])){
     $errors[] = 'Votre adresse email doit être complétée';
   }
   if(!filter_var($post['input_email'], FILTER_VALIDATE_EMAIL)){
     $errors[] = 'Votre adresse email est invalide';
   }
-  if(!empty($post['input_password'])){
+  if(empty($post['input_password'])){
     $errors[] = 'Votre mot de passe doit être complété';
   }
 
@@ -75,16 +75,27 @@ if(!empty($_POST)){
       <div class="container">
         <!-- <div class="ftco-animate" data-scrollax=" properties: { translateY: '70%' }"> -->
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-            <div class="col-4" id="form">
+            <div class="col-md-6 col-xl-5" id="form">
               <form method="post">
                 <p>Veuillez remplir ce formulaire pour vous connecter</p>
                 
-                <?php
-                  if(isset($errors) && count($errors) > 0){
 
-                    echo '<p class="text-danger">'.implode('<br>', $errors);
+
+
+                <?php
+                  if(isset($errors_user) && count($errors_user) > 0){
+
+                    echo '<div class="row no-gutters">
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                              <i class="icon-times" style="color:#f00;font-size:40px;"></i>
+                            </div>';
+                    echo  '<div class="col-10"> 
+                              <p class="mb-0" style="font-size:12px;color:#f00">'.implode('<br>', $errors_user).'</p>
+                          </div>';
+                    echo '</div>';
                   }
                 ?>
+
 
                 
                 <div class="form-group">
@@ -99,7 +110,7 @@ if(!empty($_POST)){
                   <button type="submit" class="btn btn-primary mb-2">Me connecter</button>
                 </div>
                 <div class="form-group">
-                  <a href="my-account.php" class="btn btn-primary mb-2">Je n'ai pas de compte ?</a>
+                  <a href="user-add.php" class="btn btn-primary mb-2">Je n'ai pas de compte ?</a>
                 </div>
               </form>
             </div>
@@ -108,31 +119,6 @@ if(!empty($_POST)){
       </div>
 
 
-
-
-
-<section class="ftco-section ftco-section-parallax bg-secondary ftco-no-pb">
-      <div class="parallax-img d-flex align-items-center">
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-7 text-center heading-section heading-section-white heading-section-no-line ftco-animate">
-              <h2>Newsletter</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
-              <div class="row d-flex justify-content-center mt-4 mb-4">
-                <div class="col-md-8">
-                  <form action="#" class="subscribe-form">
-                    <div class="form-group d-flex">
-                      <input type="text" class="form-control" placeholder="Enter email address">
-                      <input type="submit" value="Subscribe" class="submit px-3">
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
 <?php include '_partials/footer.php';?>
 

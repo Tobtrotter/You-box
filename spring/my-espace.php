@@ -25,13 +25,31 @@ if(empty($my_user)){
   header('Location: index.php');
 }
 
+
+// Pour acceder aux infos de mon utilisateur dans cette page 
+
+echo $my_user['email'];
+echo $my_user['firstname'];
+
+
+
+// Pour acceder aux infos de mon utilisateur stockée en session 
+echo $_SESSION['user']['firstname']; 
  
+
+
 ?>
+
+
+<input type="text" name="input_firstname" value="<?php echo $my_user['email']; ?>">
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <?php include '_partials/head.php';?>
  <body>
-   <?php include '_partials/menu-account.php';?>
+   <?php include '_partials/menu.php';?>
 
    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
