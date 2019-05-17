@@ -34,7 +34,7 @@
             <div class="ftco-footer-widget mb-4">
               <div class="col-12 d-flex align-items-center">
                  <a href="index.php"><img src="images/logo-you.png" class="navbar-brand-logo" style="  width: 75px;height: 75px;" ></a> 
-                 <p style="padding-top: 25px;">Votre Box culturelle personnalisée uniquement pour vous</p>
+                 <p style="padding-top: 25px;">Votre Box culturelle personnalisée, uniquement pour vous</p>
               </div>
             
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">

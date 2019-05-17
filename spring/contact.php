@@ -40,7 +40,7 @@
                 <p><span>Email : </span> <a href="mailto:contact@youbox.com">contact@youbox.com</a></p>
               </div>
               <div>
-                <p><span>Facebook</span> <a href="#">facebook.com</a></p>
+                <p><span>Facebook : </span> <a href="#">facebook/you-box.com</a></p>
               </div>
             </div>
             <div class="col-6">
