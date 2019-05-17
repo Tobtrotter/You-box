@@ -1,6 +1,6 @@
       
 
-
+<!--
 
     <section class="ftco-section ftco-section-parallax bg-secondary ftco-no-pb">
       <div class="parallax-img d-flex align-items-center">
@@ -25,7 +25,7 @@
       </div>
     </section>
 
-
+!-->
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">

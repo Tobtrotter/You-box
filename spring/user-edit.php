@@ -1,9 +1,14 @@
 <?php
 
-session_start(); // On utilise les sessions
+session_start();
 
-// On se connecte a la base de données
 require 'conf/config-sql.php';
+  
+if(empty($_SESSION['user'])){
+  // Je redirige l'utilisateur vers la page d'accueil s'il n'est pas connecté
+  header('Location: index.php'); 
+  die; // On arrete tout pour être sur qu'il ne peut pas aller plus loin
+}
 
 
 if(!empty($_POST)){
@@ -25,42 +30,42 @@ if(!empty($_POST)){
     $errors[] = 'Votre adresse email est invalide';
   }
 
-  if(strlen($post['input_password']) < 8){
-    $errors[] = 'Votre mot de passe doit comporter au moins 8 caractères';
-  }
-  elseif($post['input_password'] != $post['input_password_conf']){
-    $errors[] = 'Votre mot de passe et sa confirmation ne correspondent pas';
-  }
 
-  // On compte les erreurs et s'il n'y en a pas, le formulaire est valide
-  if(count($errors) === 0){
+    $sql = "UPDATE users SET lastname = :param_lastname,firstname = :param_firstname, email = :param_email WHERE id = :param_id";
 
-    // sauvegarder l'utilisateur en base de données
+    $result = $bdd->prepare($sql);
 
-    // On préparer la sauvegarde
-    $result = $bdd->prepare('INSERT INTO users (lastname,firstname,email,password) VALUES(:param_lastname,:param_firstname,:param_email,:param_password)');
-
-    $result->bindValue(':param_lastname', $post['input_lastname']);
-    $result->bindValue(':param_firstname', $post['input_firstname']);
-    $result->bindValue(':param_email', $post['input_email']);
-    $result->bindValue(':param_password', password_hash($post['input_password'], PASSWORD_DEFAULT));
+    $result->bindValue(':param_id', $_SESSION['user']['id'],PDO::PARAM_INT);
+    $result->bindValue(':param_lastname', $post['input_lastname'],PDO::PARAM_STR);
+    $result->bindValue(':param_firstname', $post['input_firstname'],PDO::PARAM_STR);
+    $result->bindValue(':param_email', $post['input_email'],PDO::PARAM_STR);
 
     // On sauvegarde
     if($result->execute()){
 
       $_SESSION['user'] = [
-        'id'        => $bdd->lastInsertId(), // Permet de connaitre l'id de l'utilisateur qu'on vient tout juste d'insérer
+        'id'        => $_SESSION['user']['id'], // Permet de connaitre l'id de l'utilisateur qu'on vient tout juste d'insérer
         'firstname' => $post['input_firstname'],
         'lastname'  => $post['input_lastname'],
+        'email' => $post['input_email'],
       ];
-
-      //header('Location: mapage_de_destination_des_questionnaires_deYann&Maureen.php');
     }
   }
 
 
+// Permet de récuperer TOUTES les informations depuis la base de données
+$sql = 'SELECT * FROM users WHERE id = :param_id';
+$res = $bdd->prepare($sql);
+$res->bindValue(':param_id', $_SESSION['user']['id'], PDO::PARAM_INT);
+$res->execute();
 
+$my_user = $res->fetch();
+if(empty($my_user)){ 
+  // En théorie, peu de chance d'arriver mais au cas ou...
+  // On trouve pas d'utilisateur ayant un ID correspondant
+  header('Location: index.php');
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -75,9 +80,13 @@ if(!empty($_POST)){
       <div class="container">
         <!-- <div class="ftco-animate" data-scrollax=" properties: { translateY: '70%' }"> -->
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+
+
+
+            <?php if(!empty($_SESSION['user'])): ?> <!-- utilisateur connecté -->
             <div class="col-md-6 col-xl-5" id="form">
               <form method="post">
-                <p>Veuillez remplir ce formulaire pour vous créer un compte</p>
+                <p>Vous pouvez modifier vos informations</p>
 
                 <?php
                   if(isset($errors) && count($errors) > 0){
@@ -95,24 +104,51 @@ if(!empty($_POST)){
 
                 <div class="form-group">
                   <label for="formGroupExampleInput">Nom</label>
-                  <input type="text" name="input_lastname" class="form-control" id="formGroupExampleInput" placeholder="Nom">
+                  <input type="text" name="input_lastname" class="form-control" id="formGroupExampleInput" placeholder="Nom" value="<?php echo $my_user['lastname']; ?>">
                 </div>
                 <div class="form-group">
                   <label for="formGroupExampleInput">Prénom</label>
-                  <input type="text" name="input_firstname" class="form-control" id="formGroupExampleInput" placeholder="Prénom">
+                  <input type="text" name="input_firstname" class="form-control" id="formGroupExampleInput" placeholder="Prénom" value="<?php echo $my_user['firstname']; ?>">
                 </div>
                 <div class="form-group">
                   <label for="formGroupExampleInput">Email</label>
                   <input type="email" name="input_email" class="form-control" id="formGroupExampleInput" placeholder="Email" value="<?php echo $my_user['email']; ?>">
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary mb-2">Créer mon compte</button>
+                  <button type="submit" class="btn btn-primary mb-2">Modifier mes informations</button>
                 </div>
                 <div class="form-group">
-                  <a href="connexion.php" class="btn btn-primary mb-2">J'ai déjà un compte ?</a>
+                  <a href="my-espage.php" class="btn btn-primary mb-2">Annuler</a>
                 </div>
               </form>
             </div>
+          </div>            
+
+
+
+
+
+
+            <?php else: ?> <!-- utilisateur non connecté -->
+
+            <h1 class="mb-0">You Box</h1>
+            <h3 class="subheading mb-4 pb-1">Votre box culturelle personnalisée</h3>
+            <p>
+              <a href="user-add.php" class="btn btn-primary py-3 px-4">Créer un compte</a> 
+              <a href="my-account.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
+            </p>
+          <?php endif;?>
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </div>
       </div>    
