@@ -8549,7 +8549,7 @@ h1, h2, h3, h4, h5,
   .btn.btn-primary {
     display: auto;
     background: #000 !important;
-    border: 1px solid #000 !important;
+    border: 3px solid #000 !important;
     color: #fff !important; }
     .btn.btn-primary:hover {
       border: 1px solid #c7b198;
@@ -8573,7 +8573,7 @@ h1, h2, h3, h4, h5,
       color: #c7b198; }
   .btn.btn-white {
     background: #fff !important;
-    border: 1px solid #fff !important;
+    border: 3px solid #d5ba5e !important;
     color: #000000 !important; }
     .btn.btn-white:hover {
       border: 1px solid #000000 !important;
