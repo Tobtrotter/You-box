@@ -49,14 +49,14 @@
           <div class="col-md-6">
               <div class="row no-gutters">
                 <div class="col-md-6 ftco-animate">
-                  <a href="images/image_1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_1.jpg);">
+                  <a href="images/image_1.jpeg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_1.jpeg);">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                       <span class="icon-instagram"></span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-6 ftco-animate">
-                  <a href="images/image_2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_2.jpg);">
+                  <a href="images/image_2.jpeg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_2.jpeg);">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                       <span class="icon-instagram"></span>
                     </div>
