@@ -27,16 +27,3 @@
       </div>
     </nav>
     <!-- END nav -->
-
-    <?php
-
-session_start();
-
-require 'conf/config-sql.php';
-  
-if(empty($_SESSION['user'])){
-  // Je redirige l'utilisateur vers la page d'accueil s'il n'est pas connecté
-  header('Location: index.php'); 
-  die; // On arrete tout pour être sur qu'il ne peut pas aller plus loin
-}
- ?>

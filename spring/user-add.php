@@ -54,6 +54,7 @@ if(!empty($_POST)){
         'lastname'  => $post['input_lastname'],
       ];
 
+      header('Location: my-account.php');
       //header('Location: mapage_de_destination_des_questionnaires_deYann&Maureen.php');
     }
   }
