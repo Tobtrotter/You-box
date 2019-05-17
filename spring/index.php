@@ -72,6 +72,7 @@
 	            <div class="media-body pr-lg-5">
 	              <h3 class="heading mb-3">Pratique</h3>
 	              <p>Livrée à domicile tous les mois par Colissimo ou Mondial Relay.</p>
+                
 	            </div>
 	          </div>
 	          <div class="d-flex services ftco-animate text-lg-right">
@@ -89,7 +90,7 @@
 	            <div class="icon d-flex align-items-center justify-content-center"><img src="images/lock-and-key-icon-silhouette.png"></div>
 	            <div class="media-body pl-lg-5">
 	              <h3 class="heading mb-3">Espace Membre</h3>
-	              <p> Espace personnel regroupant toutes les informations permettant au lecteur de mieux appréhender et comprendre l'univers du livre qu'il a reçu.</p>
+	              <p> Espace personnel permettant de mieux appréhender et comprendre l'univers du livre</p>
 	            </div>
 	          </div>
 	          <div class="d-flex services ftco-animate text-lg-left">
