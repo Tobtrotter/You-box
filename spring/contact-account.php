@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+require 'conf/config-sql.php';
+  
+if(empty($_SESSION['user'])){
+  // Je redirige l'utilisateur vers la page d'accueil s'il n'est pas connecté
+  header('Location: index.php'); 
+  die; // On arrete tout pour être sur qu'il ne peut pas aller plus loin
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <?php include '_partials/head.php';?>
@@ -9,12 +24,21 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-0">You Box</h1>
-            <h3 class="subheading mb-4 pb-1">Votre box culturelle personnalisée</h3>
-            <p>
-              <a href="user-add.php" class="btn btn-primary py-3 px-4">Créer un compte</a> 
-              <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
-            </p>
+            
+            <?php if(!empty($_SESSION['user'])): ?> <!-- utilisateur connecté -->
+              <h1 class="mb-0">You Box</h1>
+              <h3 class="subheading mb-4 pb-3">Votre box culturelle personnalisée</h3>
+              <h4 class="subheading small">Bienvenue <?php echo $_SESSION['user']['firstname'];?></h4> 
+              
+
+            <?php else: ?> <!-- utilisateur non connecté -->
+              <h1 class="mb-0">You Box</h1>
+              <h3 class="subheading mb-4 pb-1">Votre box culturelle personnalisée</h3>
+              <p>
+                <a href="user-add.php" class="btn btn-primary py-3 px-4">Créer un compte</a> 
+                <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
+              </p>
+            <?php endif;?>
             <div class="mouse">
               <a href="connexion.php" class="mouse-icon">
                 <div class="mouse-wheel"><span class="ion-ios-arrow-down"></span></div>
