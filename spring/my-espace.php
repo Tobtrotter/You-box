@@ -32,7 +32,7 @@ if(empty($my_user)){
 <html lang="fr">
 <?php include '_partials/head.php';?>
  <body>
-   <?php include '_partials/menu.php';?>
+   <?php include '_partials/menu-account.php';?>
 
    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
