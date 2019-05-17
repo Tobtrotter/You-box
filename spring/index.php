@@ -1,3 +1,10 @@
+<?php 
+if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
+  header('Location: my-account.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <?php include '_partials/head.php';?>

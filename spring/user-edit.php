@@ -49,6 +49,7 @@ if(!empty($_POST)){
         'lastname'  => $post['input_lastname'],
         'email' => $post['input_email'],
       ];
+      header('Location: my-account.php');
     }
   }
 
@@ -64,7 +65,8 @@ if(empty($my_user)){
   // En théorie, peu de chance d'arriver mais au cas ou...
   // On trouve pas d'utilisateur ayant un ID correspondant
   header('Location: index.php');
-}
+} 
+
 
 
 ?>
@@ -118,7 +120,7 @@ if(empty($my_user)){
                   <button type="submit" class="btn btn-primary mb-2">Modifier mes informations</button>
                 </div>
                 <div class="form-group">
-                  <a href="my-espage.php" class="btn btn-primary mb-2">Annuler</a>
+                  <a href="my-account.php" class="btn btn-primary mb-2">Annuler</a>
                 </div>
               </form>
             </div>

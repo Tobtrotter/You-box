@@ -51,16 +51,24 @@ if(!empty($_POST)){
           'id'        => $user['id'],
           'firstname' => $user['firstname'],
           'lastname'  => $user['lastname'],
+
         ];
+
+          $token = hash('sha256',$bdd->lastInsertId() . time());
+          setcookie("authToken", $token, time()+60*60*24*365); 
+          // le coookie expire dans 365 jours        
+
+
         header('Location: my-account.php'); // Redirige vers la page my-account
       }
 
     }
-
-
-
   }
+}
 
+// J'ai un cookie
+if(!empty($_COOKIE['authToken'])){
+  header('Location: my-account.php');
 }
 
 ?>
