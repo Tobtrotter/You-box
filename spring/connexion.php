@@ -120,6 +120,9 @@ if(!empty($_COOKIE['authToken'])){
                 <div class="form-group">
                   <a href="user-add.php" class="btn btn-primary mb-2">Je n'ai pas de compte ?</a>
                 </div>
+                <div class="form-group">
+                  <a href="password-request.php" class="btn btn-primary mb-2">Mot de pass oublié</a>
+                </div>
               </form>
             </div>
           </div>
