@@ -29,9 +29,12 @@ if(!empty($_POST)){
   if(!filter_var($post['input_email'], FILTER_VALIDATE_EMAIL)){
     $errors[] = 'Votre adresse email est invalide';
   }
+  if(strlen($post['input_password']) < 8){
+    $errors[] = 'Votre mot de passe doit comporter au moins 8 caractères';
+  }
 
 
-    $sql = "UPDATE users SET lastname = :param_lastname,firstname = :param_firstname, email = :param_email WHERE id = :param_id";
+    $sql = "UPDATE users SET lastname = :param_lastname, firstname = :param_firstname, email = :param_email, password = :param_password WHERE id = :param_id";
 
     $result = $bdd->prepare($sql);
 
@@ -39,6 +42,7 @@ if(!empty($_POST)){
     $result->bindValue(':param_lastname', $post['input_lastname'],PDO::PARAM_STR);
     $result->bindValue(':param_firstname', $post['input_firstname'],PDO::PARAM_STR);
     $result->bindValue(':param_email', $post['input_email'],PDO::PARAM_STR);
+    $result->bindValue(':param_password', password_hash($post['input_password'],PDO::PARAM_STR));
 
     // On sauvegarde
     if($result->execute()){
@@ -47,7 +51,7 @@ if(!empty($_POST)){
         'id'        => $_SESSION['user']['id'], // Permet de connaitre l'id de l'utilisateur qu'on vient tout juste d'insérer
         'firstname' => $post['input_firstname'],
         'lastname'  => $post['input_lastname'],
-        'email' => $post['input_email'],
+        'email' => $post['input_email'],     
       ];
       header('Location: my-account.php');
     }
@@ -115,6 +119,9 @@ if(empty($my_user)){
                 <div class="form-group">
                   <label for="formGroupExampleInput">Email</label>
                   <input type="email" name="input_email" class="form-control" id="formGroupExampleInput" placeholder="Email" value="<?php echo $my_user['email']; ?>">
+                </div>                <div class="form-group">
+                  <label for="exampleInputPassword">Mot de passe</label>
+                  <input type="password" name="input_password" class="form-control" id="exampleInputPassword" placeholder="Mot de passe">
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary mb-2">Modifier mes informations</button>
