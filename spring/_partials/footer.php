@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+      
+
+<!--
+>>>>>>> 1192f1479bfe5c51cd710f0f8f30996a99e2f0eb
 
     <section class="ftco-section ftco-section-parallax bg-secondary ftco-no-pb">
       <div class="parallax-img d-flex align-items-center">
@@ -22,7 +28,7 @@
       </div>
     </section>
 
-
+!-->
 
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -32,7 +38,7 @@
             <div class="ftco-footer-widget mb-4">
               <div class="col-12 d-flex align-items-center">
                  <a href="index.php"><img src="images/logo-you.png" class="navbar-brand-logo" style="  width: 75px;height: 75px;" ></a> 
-                 <p style="padding-top: 25px;">Votre Box culturelle personnalisée uniquement pour vous</p>
+                 <p style="padding-top: 25px;">Votre Box culturelle personnalisée, uniquement pour vous</p>
               </div>
             
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
@@ -47,28 +53,28 @@
           <div class="col-md-6">
               <div class="row no-gutters">
                 <div class="col-md-6 ftco-animate">
-                  <a href="images/image_1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_1.jpg);">
+                  <a href="images/alisa-anton-182057-unsplash.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/alisa-anton-182057-unsplash.jpg);">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                       <span class="icon-instagram"></span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-6 ftco-animate">
-                  <a href="images/image_2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_2.jpg);">
+                  <a href="images/prasanna-kumar-218704-unsplash.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/prasanna-kumar-218704-unsplash.jpg);">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                       <span class="icon-instagram"></span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-6 ftco-animate">
-                  <a href="images/image_3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_3.jpg);">
+                  <a href="images/giulia-bertelli-104575-unsplash.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/giulia-bertelli-104575-unsplash.jpg);">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                       <span class="icon-instagram"></span>
                     </div>
                   </a>
                 </div>
                 <div class="col-md-6 ftco-animate">
-                  <a href="images/image_4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/image_4.jpg);">
+                  <a href="images/annie-spratt-303944-unsplash.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/annie-spratt-303944-unsplash.jpg);">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                       <span class="icon-instagram"></span>
                     </div>
