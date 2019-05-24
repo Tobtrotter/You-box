@@ -73,6 +73,14 @@ if(!empty($_POST)){
             $mail->msgHTML($message);
 
             $mail->send();
+            $result = $bdd->prepare('INSERT INTO password_request  (email,uniqid,date_expire) VALUES(:param_email,:param_uniqid, :param_date_expire)');
+
+              $result->bindValue(':param_email', $post['input_email']);
+              $result->bindValue(':param_uniqid', $code);
+              $result->bindValue(':param_date_expire', $date_expire);
+
+
+              $result->execute();            
         }
         else { // Sinon j'ai des erreurs
           $formValid = false;
@@ -80,14 +88,7 @@ if(!empty($_POST)){
       }
 
 
-  $result = $bdd->prepare('INSERT INTO users (email,uniqid,date_expire) VALUES(:param_email,:param_uniqid, :param_date_expire)');
 
-    $result->bindValue(':param_email', $post['input_email']);
-    $result->bindValue(':param_uniqid', $code);
-    $result->bindValue(':param_date_expire', $date_expire);
-
-
-    $result->execute();
 
 // J'ai un cookie
 if(!empty($_COOKIE['authToken'])){
@@ -112,6 +113,13 @@ if(!empty($_COOKIE['authToken'])){
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
 
             <div class="col-md-6 col-xl-5" id="form">
+               <?php
+              // si la varible $formValid existe ET que sa valeur est à TRUE 
+              if (isset($formValid) && $formValid == true ):?>
+                  <p style = "color:green"> Le mail de réinitialisation a bien été envoyé sur l'adresse mail renseignée.</p>
+              <?php elseif (isset($formValid) && $formValid == false): ?> 
+                  <p style ="color:red"><?php echo implode('<br>', $errors);?></p>
+              <?php endif;?>
               <form method="post">
                 <p>Vous pouvez modifier vos informations</p>
 
