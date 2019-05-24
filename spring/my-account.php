@@ -43,7 +43,7 @@ if(empty($my_user)){
             <h1 class="mb-0">Bienvenue <?php echo $_SESSION['user']['firstname'];?>,</h1>
             <h3 class="subheading mb-4 pb-3">Votre box culturelle personnalisée selon vos goûts</h3>
             <p>
-              <a href="my-account.php" class="btn btn-primary py-3 px-4">Mon compte</a> 
+              <a href="my-espace.php" class="btn btn-primary py-3 px-4">Mon compte</a> 
               <a href="signout.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se déconnecter</a>
             </p>
             <?php else: ?> <!-- utilisateur non connecté -->

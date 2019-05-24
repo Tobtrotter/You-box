@@ -12,11 +12,11 @@
             <h1 class="mb-0">You Box</h1>
             <h3 class="subheading mb-4 pb-1">Votre box culturelle personnalisée</h3>
             <p>
-              <a href="#" class="btn btn-primary py-3 px-4">Créer un compte</a> 
-              <a href="#" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
+              <a href="user-add.php" class="btn btn-primary py-3 px-4">Créer un compte</a> 
+              <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
             </p>
             <div class="mouse">
-              <a href="#" class="mouse-icon">
+              <a href="connexion.php" class="mouse-icon">
                 <div class="mouse-wheel"><span class="ion-ios-arrow-down"></span></div>
               </a>
             </div>
@@ -40,7 +40,7 @@
                 <p><span>Email : </span> <a href="mailto:contact@youbox.com">contact@youbox.com</a></p>
               </div>
               <div>
-                <p><span>Facebook</span> <a href="#">facebook.com</a></p>
+                <p><span>Facebook : </span> <a href="#">facebook/you-box.com</a></p>
               </div>
             </div>
             <div class="col-6">

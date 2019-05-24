@@ -1,3 +1,10 @@
+<?php 
+if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
+  header('Location: my-account.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <?php include '_partials/head.php';?>
@@ -72,6 +79,7 @@
 	            <div class="media-body pr-lg-5">
 	              <h3 class="heading mb-3">Pratique</h3>
 	              <p>Livrée à domicile tous les mois par Colissimo ou Mondial Relay.</p>
+                
 	            </div>
 	          </div>
 	          <div class="d-flex services ftco-animate text-lg-right">
@@ -89,14 +97,14 @@
 	            <div class="icon d-flex align-items-center justify-content-center"><img src="images/lock-and-key-icon-silhouette.png"></div>
 	            <div class="media-body pl-lg-5">
 	              <h3 class="heading mb-3">Espace Membre</h3>
-	              <p> Accès personnel sur le site aux informations concernant l'auteur et le style du livre.</p>
+	              <p> Espace personnel permettant de mieux appréhender et comprendre l'univers du livre</p>
 	            </div>
 	          </div>
 	          <div class="d-flex services ftco-animate text-lg-left">
 	            <div class="icon d-flex align-items-center justify-content-center"><img src="images/light-brain-education-symbol.png"></div>
 	            <div class="media-body pl-lg-5">
 	              <h3 class="heading mb-3">Sans prise de tête</h3>
-	              <p>Pas besoin de penser à chaque fin de mois de recommander, ça se fait tout seul.</p>
+	              <p>Pas besoin de penser de recommander à chaque fin de mois, ça se fait tout seul.</p>
 	            </div>
 	          </div>
 	          

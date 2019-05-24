@@ -54,13 +54,24 @@ if(!empty($_POST)){
         'lastname'  => $post['input_lastname'],
       ];
 
+        $token = hash('sha256',$bdd->lastInsertId() . time());
+          setcookie("authToken", $token, time()+60*60*24*365); 
+          // le coookie expire dans 365 jours
+
+      header('Location: my-account.php');
       //header('Location: mapage_de_destination_des_questionnaires_deYann&Maureen.php');
     }
   }
 
-
-
 }
+// J'ai un cookie
+if(!empty($_COOKIE['authToken'])){
+  header('Location: my-account.php');
+}
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -95,15 +106,15 @@ if(!empty($_POST)){
 
                 <div class="form-group">
                   <label for="formGroupExampleInput">Nom</label>
-                  <input type="text" name="input_lastname" class="form-control" id="formGroupExampleInput" placeholder="Nom">
+                  <input type="text" name="input_lastname" class="form-control" id="formGroupExampleInput" placeholder="Nom" value="<?php echo $post['input_lastname'] ?? '';?>">
                 </div>
                 <div class="form-group">
                   <label for="formGroupExampleInput">Prénom</label>
-                  <input type="text" name="input_firstname" class="form-control" id="formGroupExampleInput" placeholder="Prénom">
+                  <input type="text" name="input_firstname" class="form-control" id="formGroupExampleInput" placeholder="Prénom" value="<?php echo $post['input_firstname'] ?? '';?>">
                 </div>
                 <div class="form-group">
                   <label for="formGroupExampleInput">Email</label>
-                  <input type="email" name="input_email" class="form-control" id="formGroupExampleInput" placeholder="Email">
+                  <input type="email" name="input_email" class="form-control" id="formGroupExampleInput" placeholder="Email" value="<?php echo $post['input_email'] ?? '';?>">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword">Mot de passe</label>

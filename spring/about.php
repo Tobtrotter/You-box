@@ -36,14 +36,14 @@
           <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;  H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
           <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A; c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
         </svg>
-        <div class='pricing-price'><span class='pricing-currency'>€</span>29<span class='pricing-period'>/ mois</span>
+        <div class='pricing-price'><span class='pricing-currency'>€</span>10<span class='pricing-period'>/ mois</span>
         </div>
         <h3 class='pricing-title'> LA CLASSIQUE </h3>
       </div>
       <ul class='pricing-feature-list'>
-        <li class='pricing-feature'>1 GB of space</li>
-        <li class='pricing-feature'>Support at $25/hour</li>
-        <li class='pricing-feature'>Limited cloud access</li>
+        <li class='pricing-feature'>1 livre par mois</li>
+        <li class='pricing-feature'>100% personnalisé</li>
+       <!-- <li class='pricing-feature'></li> -->
       </ul>
       <button class='pricing-action'> JE DÉCOUVRE </button>
     </div>
@@ -56,14 +56,14 @@
           <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;  H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
           <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A; c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
         </svg>
-         <div class='pricing-price'><span class='pricing-currency'>€</span>29<span class='pricing-period'>/ mois</span>
+         <div class='pricing-price'><span class='pricing-currency'>€</span>20<span class='pricing-period'>/ mois</span>
         </div>
         <h3 class='pricing-title'> L'ÉTUDIANTE </h3>
       </div>
       <ul class='pricing-feature-list'>
-        <li class='pricing-feature'>5 GB of space</li>
-        <li class='pricing-feature'>Support at $5/hour</li>
-        <li class='pricing-feature'>Full cloud access</li>
+        <li class='pricing-feature'>1 livre + 1 magazine par mois</li>
+        <li class='pricing-feature'>Aprofondissement des notions vues en classe</li>
+     <!--   <li class='pricing-feature'>Certifiée par l'Éducation Nationale</li> -->
       </ul>
       <button class='pricing-action'> JE DÉCOUVRE </button>
     </div>
@@ -77,14 +77,14 @@
           <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;  H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
           <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A; c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
         </svg>
-         <div class='pricing-price'><span class='pricing-currency'>€</span>29<span class='pricing-period'>/ mois</span>
+         <div class='pricing-price'><span class='pricing-currency'>€</span>15<span class='pricing-period'>/ mois</span>
         </div>
         <h3 class='pricing-title'> L'ACTUELLE </h3>
       </div>
       <ul class='pricing-feature-list'>
-        <li class='pricing-feature'>1 GB of space</li>
-        <li class='pricing-feature'>Support at $25/hour</li>
-        <li class='pricing-feature'>Limited cloud access</li>
+        <li class='pricing-feature'>1 livre</li>
+        <li class='pricing-feature'>Aide à décripter l'actualité</li>
+       <!-- <li class='pricing-feature'>?</li> -->
       </ul>
       <button class='pricing-action'> JE DÉCOUVRE </button>
     </div>
@@ -97,14 +97,14 @@
           <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;  H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
           <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A; c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
         </svg>
-         <div class='pricing-price'><span class='pricing-currency'>€</span>29<span class='pricing-period'>/ mois</span>
+         <div class='pricing-price'><span class='pricing-currency'>€</span>21<span class='pricing-period'>/ mois</span>
         </div>
         <h3 class='pricing-title'> LA FAVORITE </h3>
       </div>
       <ul class='pricing-feature-list'>
-        <li class='pricing-feature'>5 GB of space</li>
-        <li class='pricing-feature'>Support at $5/hour</li>
-        <li class='pricing-feature'>Full cloud access</li>
+        <li class='pricing-feature'>Sélection "Coup de Coeur"</li>
+        <li class='pricing-feature'>Les meilleures nouveautés </li>
+       <!-- <li class='pricing-feature'>?</li> -->
       </ul>
       <button class='pricing-action'> JE DÉCOUVRE </button>
     </div>

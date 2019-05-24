@@ -26,30 +26,13 @@ if(empty($my_user)){
 }
 
 
-// Pour acceder aux infos de mon utilisateur dans cette page 
-
-echo $my_user['email'];
-echo $my_user['firstname'];
-
-
-
-// Pour acceder aux infos de mon utilisateur stockée en session 
-echo $_SESSION['user']['firstname']; 
- 
-
 
 ?>
-
-
-<input type="text" name="input_firstname" value="<?php echo $my_user['email']; ?>">
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <?php include '_partials/head.php';?>
  <body>
-   <?php include '_partials/menu.php';?>
+   <?php include '_partials/menu-account.php';?>
 
    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -61,7 +44,7 @@ echo $_SESSION['user']['firstname'];
             <h1 class="mb-0">Bienvenue <?php echo $_SESSION['user']['firstname'];?>,</h1>
             <h3 class="subheading mb-4 pb-3">Votre box culturelle personnalisée selon vos goûts</h3>
             <p>
-              <a href="my-account.php" class="btn btn-primary py-3 px-4">Mon compte</a> 
+              <a href="user-edit.php" class="btn btn-primary py-3 px-4">Modifier mon compte</a> 
               <a href="signout.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se déconnecter</a>
             </p>
             <?php else: ?> <!-- utilisateur non connecté -->
@@ -87,59 +70,7 @@ echo $_SESSION['user']['firstname'];
 
 
 
-   <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <ul class="ministry-list">
-              <li class="active"><a href="#">Récapitulatif</a></li>
-              <li><a href="#">Mes informations</a></li>
-              <li><a href="#">Missions</a></li>
-            </ul>
-          </div>
-          <div class="col-md-9">
-            <h3 class="mb-4">Mon abonnement</h3>
-            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <ul class="ministry-list my-5">
-              <li><span class="ion-ios-arrow-forward mr-2"></span>Bible classes for all ages</li>
-              <li><span class="ion-ios-arrow-forward mr-2"></span>The Big Oxmox advised her not to do so</li>
-              <li><span class="ion-ios-arrow-forward mr-2"></span>Pointing has no control about</li>
-              <li><span class="ion-ios-arrow-forward mr-2"></span>Separated they live in Bookmarksgrove right</li>
-            </ul>
-            <hr>
-            <h3 class="mb-4 mt-5">The Lord's Army</h3>
-            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-		<section class="ftco-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<ul class="ministry-list">
-							<li class="active"><a href="#">Youth &amp; Family</a></li>
-							<li><a href="#">Community Outreach</a></li>
-							<li><a href="#">Missions</a></li>
-						</ul>
-					</div>
-					<div class="col-md-9">
-						<h3 class="mb-4">Mon abonnement</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-						<ul class="ministry-list my-5">
-							<li><span class="ion-ios-arrow-forward mr-2"></span>Bible classes for all ages</li>
-							<li><span class="ion-ios-arrow-forward mr-2"></span>The Big Oxmox advised her not to do so</li>
-							<li><span class="ion-ios-arrow-forward mr-2"></span>Pointing has no control about</li>
-							<li><span class="ion-ios-arrow-forward mr-2"></span>Separated they live in Bookmarksgrove right</li>
-						</ul>
-						<hr>
-						<h3 class="mb-4 mt-5">The Lord's Army</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-					</div>
-				</div>
-			</div>
-		</section>
     
 <?php include '_partials/footer.php';?> 
   </body>
