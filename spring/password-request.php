@@ -33,6 +33,8 @@ if(!empty($_POST)){
 
 
     // On sauvegarde notre code + email + expiration dans la base de données.
+    $code = uniqid();
+    $date_expire = date('Y-m-d H:i:s', strtotime('+48 hours'));
 
 
     // on envoi le mail
@@ -61,7 +63,8 @@ if(!empty($_POST)){
     
 
            $message = '<p>Bonjour,';
-           $message.= '<br>Vous avez fait une demande de changement de mot de passe. <br>Voici ci-dessous le code pour permettre ce changement.';
+           $message.= '<br>Vous avez fait une demande de changement de mot de passe.';
+           $message.= '<br>Voici ci-dessous le code pour permettre ce changement.';
            $message.= '<hr>';
            $message.= $code;
            $message.= '<hr>';
@@ -77,30 +80,14 @@ if(!empty($_POST)){
       }
 
 
-  $result = $bdd->prepare('INSERT INTO users (email,uniqid) VALUES(:param_email,:param_uniqid)');
+  $result = $bdd->prepare('INSERT INTO users (email,uniqid,date_expire) VALUES(:param_email,:param_uniqid, :param_date_expire)');
 
     $result->bindValue(':param_email', $post['input_email']);
-    $result->bindValue(':param_uniqid');
+    $result->bindValue(':param_uniqid', $code);
+    $result->bindValue(':param_date_expire', $date_expire);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $result->execute();
 
 // J'ai un cookie
 if(!empty($_COOKIE['authToken'])){

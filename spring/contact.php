@@ -66,7 +66,7 @@ if(!empty($_POST['input_name']) && !empty($_POST['input_email']) && !empty($_POS
 
       //Recipients
       $mail->setFrom($post['input_email'], $post['input_name']);      // l'Expéditeur
-      $mail->addAddress('mathilde.tobelem@gmail.com', 'Mathilde User');     // Le destinataire
+      $mail->addAddress('contact@youbox.com', 'YouBox');     // Le destinataire
       
       
       $mail->addCC('cc@example.com');             // Copie

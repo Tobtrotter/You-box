@@ -75,7 +75,7 @@ if(!empty($_POST)){   // une condition pour m'assurer que le formulaire a bien �
 
       //Recipients
       $mail->setFrom($post['input_email'], $post['input_name']);      // l'Expéditeur
-      $mail->addAddress('mathilde.tobelem@gmail.com', 'Mathilde User');     // Le destinataire
+      $mail->addAddress('contact@youbox.com', 'YouBox');      // Le destinataire
       
       
       $mail->addCC('cc@example.com');             // Copie
@@ -124,8 +124,8 @@ if(!empty($_POST)){   // une condition pour m'assurer que le formulaire a bien �
             <h1 class="mb-0">You Box</h1>
             <h3 class="subheading mb-4 pb-1">Votre box culturelle personnalisée</h3>
             <p>
-              <a href="user-add.php" class="btn btn-primary py-3 px-4">Créer un compte</a> 
-              <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a>
+              <a href="my-account.php" class="btn btn-primary py-3 px-4">Mon compte</a> 
+              <a href="signout.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se déconnecter</a>
             </p>
             <div class="mouse">
               <a href="connexion.php" class="mouse-icon">
