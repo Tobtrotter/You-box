@@ -1,3 +1,58 @@
+<?php
+// Session qui reste ouverte
+session_start();
+
+
+$errors = array();
+
+if(!(empty($_POST))){
+  $post = array_map('trim', array_map('strip_tags', $_POST)); // Securise les données
+
+  if(empty($post['author_name'])){
+    $errors[] = 'Vous devez renseigner votre auteur';
+  }
+  if(empty($post['book_name'])){
+    $errors[] = 'Vous devez renseigner votre livre';
+  }
+  if(empty($post['choose'])){
+    $errors[] = 'Vous devez sélectionner Oui ou Non';
+  }
+  if(empty($post['genre_name'])){
+    $errors[] = 'Vous devez sélectionner votre catégorie';
+  }
+  if(empty($post['read_magazine'])){
+    $errors[] = 'Vous devez sélectionner Oui ou Non';
+  }
+  if(empty($post['look_serie'])){
+    $errors[] = 'Vous devez sélectionner Oui ou Non';
+  }
+
+  if(count($errors) == 0){
+    // Enregistrement en base de données avec INSERT
+    $res = $bdd->prepare('INSERT INTO step3(author_name, book_name, choose, genre_name, read_magazine, look_serie) VALUES (:author_name, :book_name, :choose, :genre_name, :read_magazine, :look_serie)');
+
+    $res->bindValue(':author_name', $post['author_name'], PDO::PARAM_STR);
+    $res->bindValue(':book_name', $post['book_name']);
+    $res->bindValue(':choose', $post['choose']);
+    $res->bindValue(':genre_name', $post['genre_name']);
+    $res->bindValue(':read_magazine', $post['read_magazine']);
+    $res->bindValue(':look_serie', $post['look_serie']);
+
+    // J'execute (donc ça sauvegarde)
+    $res->execute();
+
+	}
+	else {
+		// Si la vaiable $form_valid vaut "false" alors le tableau $errors contient des erreurs
+		$form_valid = false;
+	}
+
+    // Redirection
+    header('Location: step7.php');
+  }
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -16,7 +71,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <h1>Étape 3 : Question lié à la Box</h1>
+    <h1>Étape 3 : Question lié à la Box Classique </h1>
 
     <!-- Question 1 -->
     <!-- Si on a pas l'auteur enregistrer envoyé un mail d'alerte pour créer la fiche de l'auteur-->
@@ -65,11 +120,11 @@
     <div class="form-group">
       <label for="choose">Lisez vous des magazines ?</label><br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="choose_yes_no" id="yes" value="option1">
+        <input class="form-check-input" type="radio" name="read_magazine" id="yes" value="option1">
         <label class="form-check-label" for="yes">Oui</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="choose_yes_no" id="no" value="option2">
+        <input class="form-check-input" type="radio" name="read_magazine" id="no" value="option2">
         <label class="form-check-label" for="no">non</label>
       </div>
     </div>
@@ -80,11 +135,11 @@
     <div class="form-group">
       <label for="choose">Regarder vous des série ?</label><br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="choose_yes_no" id="yes" value="option1">
+        <input class="form-check-input" type="radio" name="look_serie" id="yes" value="option1">
         <label class="form-check-label" for="yes">Oui</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="choose_yes_no" id="no" value="option2">
+        <input class="form-check-input" type="radio" name="look_serie" id="no" value="option2">
         <label class="form-check-label" for="no">non</label>
       </div>
     </div>
