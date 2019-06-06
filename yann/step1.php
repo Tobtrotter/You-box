@@ -6,7 +6,7 @@ session_start();
 $errors = array();
 
 if(!(empty($_POST))){
-  $post = array_map('trim', array_map('strip_tags', $_POST)); // Securise les donnéelse
+  $post = array_map('trim', array_map('strip_tags', $_POST)); // Securise les données
 
   if(empty($post['tranche_age'])){
     $errors[] = 'Vous devez sélectionner une tranche d\'age';
