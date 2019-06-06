@@ -80,7 +80,9 @@ if(!empty($_POST)){
               $result->bindValue(':param_date_expire', $date_expire);
 
 
-              $result->execute();            
+              $result->execute();    
+
+              header('Location: password-edit.php');        
         }
         else { // Sinon j'ai des erreurs
           $formValid = false;
