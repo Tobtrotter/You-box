@@ -1,4 +1,5 @@
 <?php
+// Session qui reste ouverte
 session_start();
 
 
