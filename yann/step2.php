@@ -4,22 +4,48 @@ session_start();
 
 $errors = array();
 
+if(!(empty($_POST))){
+  $post = array_map('trim', array_map('strip_tags', $_POST)); // Sécurise les données
 
+  if (empty($post[choose_box1])) {
+    header('Location: step3.php');
+    $errors[]='Vous devez choisir une box';
+  }
 
+  if (empty($post[choose_box2])) {
+    header('Location: step4.php');
+    $errors[]='Vous devez choisir une box';
+  }
 
+  if (empty($post[choose_box3])) {
+    header('Location: step5.php');
+    $errors[]='Vous devez choisir une box';
+  }
 
+  if (empty($post[choose_box4])) {
+    header('Location: step6.php');
+    $errors[]='Vous devez choisir une box';
+  }
 
+  if(count($errors) == 0){
+    // Enregistrement en base de données avec INSERT
+    $res = $bdd->prepare('INSERT INTO step2(choose_box) VALUES (:choose_box1, :choose_box2, :choose_box3, :choose_box4)');
 
+    $res->bindValue(':choose_box1', $post['choose_box1'], PDO::PARAM_STR);
+    $res->bindValue(':choose_box2', $post['choose_box2']);
+    $res->bindValue(':choose_box3', $post['choose_box3']);
+    $res->bindValue(':choose_box4', $post['choose_box4']);
 
+    // J'execute (donc ça sauvegarde)
+    $res->execute();
 
+  }
+  else {
+    // Si la vaiable $form_valid vaut "false" alors le tableau $errors contient des erreurs
+    $form_valid = false;
+ }
 
-
-
-
-
-
-
-
+}
 
 
  ?>
@@ -50,7 +76,7 @@ $errors = array();
           <label for="choose" > Quels formules aimerais vous choisir ? </label>
           <br>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="choose_box" id="choose_box1" value="Classique">
+          <input class="form-check-input" type="radio" name="choose_box" id="choose_box1" value="Classique">
           <label class="form-check-label" for="choose_box1">
             Box Clasique
           </label>
@@ -68,7 +94,7 @@ $errors = array();
 
     <!-- Box 2 -->
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="choose_box" id="choose_box2" value="Etudiant">
+        <input class="form-check-input" type="radio" name="choose_box" id="choose_box2" value="Etudiant">
         <label class="form-check-label" for="choose_box2">
               Box Étudiante
         </label>
@@ -78,7 +104,7 @@ $errors = array();
         <div class="collapse" id="collapse2">
           <div class="card d-inline-block">
             <div class="card-body">
-              1 ou plusieurs livres en rapport avec les études (collége, lycée, études supérieures)
+              1 livre en rapport avec les études (collége, lycée, études supérieures)
             </div>
           </div>
         </div>
@@ -87,7 +113,7 @@ $errors = array();
 
     <!-- Box 3 -->
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="choose_box" id="choose_box3" value="Actualité">
+        <input class="form-check-input" type="radio" name="choose_box" id="choose_box3" value="Actualité">
         <label class="form-check-label" for="choose_box3">
             Box Actualité
         </label>
@@ -106,7 +132,7 @@ $errors = array();
 
       <!-- Box 4 -->
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="choose_box" id="choose_box4" value="Coup de coeur">
+          <input class="form-check-input" type="radio" name="choose_box" id="choose_box4" value="Coup de coeur">
           <label class="form-check-label" for="choose_box4">
             Box Coup de Coeur
           </label>
@@ -116,7 +142,7 @@ $errors = array();
           <div class="collapse" id="collapse4">
             <div class="card d-inline-block">
               <div class="card-body">
-              1 livre nouveau et qui a suscité l'unanimité dans notre start-up
+              1 livre nouveau et qui a suscité l'unanimité dans notre équipe
               </div>
             </div>
           </div>

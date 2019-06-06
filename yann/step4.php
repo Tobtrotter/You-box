@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -41,10 +43,16 @@
     <div class="input-group mb-3">
       <select class="custom-select" id="inputGroup">
         <option selected>Sélections</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+        <option value="1">6 éme</option>
+        <option value="2">5 éme</option>
+        <option value="3">4 éme</option>
+        <option value="4">3 éme</option>
+        <option value="5">2 nd</option>
+        <option value="6">1 ére</option>
+        <option value="7">Terminal</option>
+        <option value="8">Licence</option>
+        <option value="9">Master</option>
+        <option value="10">Doctorat</option>
     </div>
 
     <!-- Question 3 -->
