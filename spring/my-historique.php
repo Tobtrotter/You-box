@@ -67,46 +67,90 @@ if(empty($my_user)){
       </div>
     </div>
 
-
-
-   <section class="ftco-section">
+   <section class="ftco-section"> <!-- petit sous-menu "box du mois", "historique" et " infos" -->
       <div class="container">
         <div class="row">
           <div class="col-md-3">
             <ul class="ministry-list">
-              <li class="active"><a href="my-account.php">Ma box du mois</a></li>
-              <li><a href="my-historique.php">Historique</a></li>
+              <li><a href="my-account.php">Ma box du mois</a></li>
+              <li class="active"><a href="my-historique.php">Historique</a></li>
               <li><a href="my-infos.php">Mes informations</a></li>
             </ul>
           </div>
+
+<!-- HISTORIQUE DES BOX -->
+          
           <div class="col-md-9">
-            <h3 class="mb-4">JANE EYRE de Charlotte Brontë</h3>
-            <p>{INSÉRER IMAGE DU LIVRE à gauche}</p>
-            <H4>Résumé :</H4>
-            <p>Orpheline, Jane Eyre est recueillie à contrecœur par une tante qui la traite durement et dont les enfants rudoient leur cousine. Placée ensuite en pension, elle y reste jusqu'à l'âge de dix-huit ans. Elle devient alors gouvernante pour le noble M. Rochester, dont elle tombe bientôt amoureuse, mais les obstacles seront nombreux.
-            <br>
-            <br>
-            Jane Eyre, c'est Charlotte Brontë elle-même, dont l'oeuvre, unique dans la production féminine de son époque, bouleverse encore, après plus d'un siècle, les lecteurs du monde entier. Ce roman autobiographique est aussi son chef-d'oeuvre. Avec une vérité, une intensité d'expression jamais égalée peut-être, elle y retrace la vie d'une pauvre gouvernante aimée du père de son élève, le rude Rochester, dont l'existence s'entoure de tragique et de mystère. Fuyant héroïquement devant une passion qu'elle juge coupable, Jane Eyre, après de longs mois de souffrance, retrouvera enfin Rochester, aveugle, mutilé, abandonné de tous, et pourra unir sa vie à la sienne. </p>
-            <ul class="ministry-list my-5">
-              <li class="active"><a href="#"><span class="ion-ios-arrow-forward mr-2"></span>Époque : Ère Victorienne</li>
-              <li class="active"><a href="#"><span class="ion-ios-arrow-forward mr-2"></span>Contexte politique et sociale</li>
-              <li class="active"><a href="#"><span class="ion-ios-arrow-forward mr-2"></span>Analyse</li>
-            </ul>
-            <hr>
-            <h4>Si vous avez aimé Jane Eyre, vous aimerez aussi : </h4>
-           <ul class="ministry-list my-5">
-              <!-- Faire des liens vers les pages des livres -->
-              <li><span></span>"Orgueil et Préjugés" de Jane Austen</li>
-              <li><span></span>"L'éducation sentimentale" de Gustave Flaubert</li>
-              <li><span></span>"Les Hauts des Hurlevents" de Emily Brontë</li>
-              <li><span></span>"Gatsby le Magnifique" de F. Scott Fitzgerald</li>
-            </ul>
-
-
+           <h3>Retrouvez ici le contenu de toutes vos box antérieures : </h3>
+           <br>
+           
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Les Heureux et des Damnés</h5>
+                  <p class="card-text">de F. Scott Fitzgerald</p>
+                  <a href="#" class="btn btn-primary">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Paris est une fête</h5>
+                  <p class="card-text">de Ernest Hemingway</p>
+                  <a href="#" class="btn btn-primary">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Les sorcières de Salem</h5>
+                  <p class="card-text">de Arthur Miller</p>
+                  <a href="#" class="btn btn-primary">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Le bûcher des vanités</h5>
+                  <p class="card-text">de Tom Wolfe</p>
+                  <a href="#" class="btn btn-primary">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">La servante écarlate</h5>
+                  <p class="card-text">de Margaret Atwood</p>
+                  <a href="#" class="btn btn-primary">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">1984</h5>
+                  <p class="card-text">de George Orwell</p>
+                  <a href="#" class="btn btn-primary">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </div> 
+
+
+       </div>
+      </div>      
     </section>
+
 
     
 <?php include '_partials/footer.php';?> 
