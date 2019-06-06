@@ -1,4 +1,30 @@
+<?php
+// Session qui reste ouverte
+session_start();
+
+$errors = array();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ?>
 <!DOCTYPE html>
+
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
