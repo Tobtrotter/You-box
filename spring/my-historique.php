@@ -83,6 +83,11 @@ if(empty($my_user)){
           <div class="col-md-9">
            <h3>Retrouvez ici le contenu de toutes vos box antérieures : </h3>
            <br>
+         
+
+          <br>
+          
+          <div class="col-md-12"> 
            
           <div class="row">
             <div class="col-sm-4">
@@ -143,9 +148,8 @@ if(empty($my_user)){
               </div>
             </div>
           </div>
-
           </div> 
-
+        </div>
 
        </div>
       </div>      
