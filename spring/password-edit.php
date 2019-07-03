@@ -35,11 +35,11 @@ if(!empty($_POST)){
   $result->bindValue(':param_code', $post['input_code']);
 
 
-/* essai
+
   $sql ="UPDATE users SET password = :param_password WHERE id = :param_id";
   $result = $bdd->prepare($sql);
 
-  $result->bindValue(':param_id',PDO::PARAM_INT);
+  $result->bindValue(':param_id',$_SESSION['user']['id'],PDO::PARAM_INT);
   $result->bindValue(':param_password', password_hash($post['input_password'],PDO::PARAM_STR));
 
   if($result->execute()){
@@ -56,7 +56,7 @@ if(!empty($_POST)){
         }  
   }
 
-  */
+
 
   $sql = 'SELECT * FROM users WHERE id = :param_id';
 $res = $bdd->prepare($sql);
