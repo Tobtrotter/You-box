@@ -55,7 +55,7 @@ if(!empty($_POST)){
       ];
       header('Location: my-account.php');
     }
-    }
+  }
 
 
 // Permet de récuperer TOUTES les informations depuis la base de données
@@ -70,6 +70,7 @@ if(empty($my_user)){
   // On trouve pas d'utilisateur ayant un ID correspondant
   header('Location: index.php');
 } 
+
 
 
 ?>
@@ -90,7 +91,7 @@ if(empty($my_user)){
 
             <?php if(!empty($_SESSION['user'])): ?> <!-- utilisateur connecté -->
             <div class="col-md-6 col-xl-5" id="form">
-              <form method="post" action="" enctype="multipart/form-data">
+              <form method="post">
                 <p>Vous pouvez modifier vos informations</p>
 
                 <?php
@@ -118,13 +119,10 @@ if(empty($my_user)){
                 <div class="form-group">
                   <label for="formGroupExampleInput">Email</label>
                   <input type="email" name="input_email" class="form-control" id="formGroupExampleInput" placeholder="Email" value="<?php echo $my_user['email']; ?>">
-                </div>                
-                <div class="form-group">
+                </div>                <div class="form-group">
                   <label for="exampleInputPassword">Mot de passe</label>
                   <input type="password" name="input_password" class="form-control" id="exampleInputPassword" placeholder="Mot de passe">
                 </div>
-
-
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary mb-2">Modifier mes informations</button>
                 </div>

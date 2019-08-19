@@ -44,18 +44,11 @@
                 
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                <br><br>
-                <li><H3 style="color: white">Pour nous contacter :</H3></li>
-                <li><p>N° de téléphone : 01.23.45.67.89</p></li>
-                <br>
-                <li><p>Email : contact@youbox.fr</p></li>
-                <br>
-                <li><p>Adresse : 6 rue de la cloche 47000 Agen</p> </li>
               </ul>
+
             </div>
+
           </div>
-
-
           <div class="col-md-6">
               <div class="row no-gutters">
                 <div class="col-md-6 ftco-animate">

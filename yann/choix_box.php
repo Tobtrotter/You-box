@@ -7,43 +7,17 @@ $errors = array();
 if(!(empty($_POST))){
   $post = array_map('trim', array_map('strip_tags', $_POST)); // Sécurise les données
 
-  if (empty($post[choose_box1])) {
+  if(!empty($post[choose_box]) && $post[choose_box] == "Classique"){
     header('Location: step3.php');
-    $errors[]='Vous devez choisir une box';
   }
 
-  if (empty($post[choose_box2])) {
+  elseif (!empty($post[choose_box]) && $post[choose_box] == "Scolaire"){
     header('Location: step4.php');
-    $errors[]='Vous devez choisir une box';
   }
 
-  if (empty($post[choose_box3])) {
-    header('Location: step5.php');
-    $errors[]='Vous devez choisir une box';
-  }
-
-  if (empty($post[choose_box4])) {
+  elseif(!empty($post[choose_box]) && $post[choose_box] == "Favorite"){
     header('Location: step6.php');
-    $errors[]='Vous devez choisir une box';
   }
-
-  if(count($errors) == 0){
-    // Enregistrement en base de données avec INSERT
-    $res = $bdd->prepare('INSERT INTO step2(choose_box) VALUES (:choose_box1, :choose_box2, :choose_box3, :choose_box4)');
-
-    $res->bindValue(':choose_box1', $post['choose_box1'], PDO::PARAM_STR);
-    $res->bindValue(':choose_box2', $post['choose_box2']);
-    $res->bindValue(':choose_box3', $post['choose_box3']);
-    $res->bindValue(':choose_box4', $post['choose_box4']);
-
-    // J'execute (donc ça sauvegarde)
-    $res->execute();
-
-  }
-  else {
-    // Si la vaiable $form_valid vaut "false" alors le tableau $errors contient des erreurs
-    $form_valid = false;
- }
 
 }
 
@@ -94,9 +68,9 @@ if(!(empty($_POST))){
 
     <!-- Box 2 -->
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="choose_box" id="choose_box2" value="Etudiant">
+        <input class="form-check-input" type="radio" name="choose_box" id="choose_box2" value="Scolaire">
         <label class="form-check-label" for="choose_box2">
-              Box Étudiante
+              Box Scolaire
         </label>
           <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
             +
@@ -110,31 +84,11 @@ if(!(empty($_POST))){
         </div>
 
 
-
-    <!-- Box 3 -->
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="choose_box" id="choose_box3" value="Actualité">
-        <label class="form-check-label" for="choose_box3">
-            Box Actualité
-        </label>
-          <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-              +
-          </button>
-        <div class="collapse" id="collapse3">
-          <div class="card d-inline-block">
-            <div class="card-body">
-             Livre, revus, magazines en lien avec l'actualité politique, sociale, culturelle, environnementales et technologique
-            </div>
-          </div>
-        </div>
-
-
-
-      <!-- Box 4 -->
+      <!-- Box 3-->
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="choose_box" id="choose_box4" value="Coup de coeur">
+          <input class="form-check-input" type="radio" name="choose_box" id="choose_box4" value="Favorite">
           <label class="form-check-label" for="choose_box4">
-            Box Coup de Coeur
+            Box Favorite
           </label>
             <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
               +

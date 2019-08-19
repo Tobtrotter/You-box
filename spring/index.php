@@ -54,11 +54,7 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
               <div class="row justify-content-center">
                 <div class="col-md-10 daily-verse text-center p-5">
                   
-                  <h3 class="ftco-animate"><span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>Les gens ne réalisent pas à quel point un simple livre peut changer toute une vie.<span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span></h3>
+                  <h3 class="ftco-animate"><img src="images/guillemet1.png">Les gens ne réalisent pas à quel point un simple livre peut changer toute une vie.<img src="images/guillemet2.png"></h3>
                   <h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; Malcom X</h4>
                 </div>
               </div>
@@ -119,18 +115,19 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
     </section>
 
     
-  <section class="ftco-section testimony-section">
-      
+
+
+     <section class="ftco-section testimony-section">
+    	
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-            <h2 class="mb-2">Notre équipe</h2><br><br>
+            <h2 class="mb-2">Notre équipe</h2>
           </div>
         </div>
-        <div class="row">
-        
-            <!-- 1er profil -->
-            <div class="col">
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
                   <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
@@ -139,16 +136,12 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
                     </span>
                   </div>
                   <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="mb-4">Passionnée de littérature et de droit, je souhaite être riche.</p>
                     <p class="name">Maureen Sauteur</p>
                     <span class="position">Chef de Produit</span>
                   </div>
                 </div>
               </div>
-            </div>
-              
-            <!-- 2e profil -->
-            <div class="col">
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
                   <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
@@ -163,10 +156,6 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- 3e profil -->
-            <div class="col">
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
                   <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
@@ -181,10 +170,6 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- 4e profil -->
-            <div class="col">
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
                   <div class="user-img mb-4" style="background-image: url(images/person_4.jpg)">
@@ -199,10 +184,11 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
                   </div>
                 </div>
               </div>
-            </div>
-
+             
+          </div>
+        </div>
       </div>
-    </section> 
+    </section>
 
 
 

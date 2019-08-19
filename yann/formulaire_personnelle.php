@@ -5,7 +5,7 @@ session_start();
 
 $errors = array();
 
-if(!(empty($_POST))){
+if(!empty($_POST)){
   $post = array_map('trim', array_map('strip_tags', $_POST)); // Securise les données
 
   if(empty($post['tranche_age'])){
@@ -33,14 +33,14 @@ if(!(empty($_POST))){
     // J'execute (donc ça sauvegarde)
     $res->execute();
 
+    // Redirection
+    header('Location: step2.php');
 	}
 	else {
 		// Si la vaiable $form_valid vaut "false" alors le tableau $errors contient des erreurs
 		$form_valid = false;
 	}
 
-    // Redirection
-    header('Location: step2.php');
   }
 
  ?>
@@ -51,12 +51,10 @@ if(!(empty($_POST))){
 
     <!-- BootStrap --->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
     <title>Formulaire</title>
   </head>
   <body>
-
-    <?php echo "Bonjour,$_SESSION['firstname'] nous allons commencer votre sélection !"; ?>
 
     <h1>Étape 1 : Formulaire Personnel</h1>
 

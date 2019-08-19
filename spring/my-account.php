@@ -74,43 +74,54 @@ if(empty($my_user)){
         <div class="row">
           <div class="col-md-3">
             <ul class="ministry-list">
-              <li class="active"><a href="my-account.php">Ma box du mois</a></li>
-              <li><a href="my-historique.php">Historique</a></li>
-              <li><a href="my-infos.php">Mes informations</a></li>
+              <li class="active"><a href="#">Récapitulatif</a></li>
+              <li><a href="#">Mes informations</a></li>
+              <li><a href="#">Missions</a></li>
             </ul>
           </div>
           <div class="col-md-9">
-            <h3 class="mb-4">JANE EYRE de Charlotte Brontë</h3>
-
-            <img src="images/jane.png" alt="janeeyre">
-            
-            <H4>Résumé :</H4>
-            <p>Orpheline, Jane Eyre est recueillie à contrecœur par une tante qui la traite durement et dont les enfants rudoient leur cousine. Placée ensuite en pension, elle y reste jusqu'à l'âge de dix-huit ans. Elle devient alors gouvernante pour le noble M. Rochester, dont elle tombe bientôt amoureuse, mais les obstacles seront nombreux.
-            <br>
-            <br>
-            Jane Eyre, c'est Charlotte Brontë elle-même, dont l'oeuvre, unique dans la production féminine de son époque, bouleverse encore, après plus d'un siècle, les lecteurs du monde entier. Ce roman autobiographique est aussi son chef-d'oeuvre. Avec une vérité, une intensité d'expression jamais égalée peut-être, elle y retrace la vie d'une pauvre gouvernante aimée du père de son élève, le rude Rochester, dont l'existence s'entoure de tragique et de mystère. Fuyant héroïquement devant une passion qu'elle juge coupable, Jane Eyre, après de longs mois de souffrance, retrouvera enfin Rochester, aveugle, mutilé, abandonné de tous, et pourra unir sa vie à la sienne. </p>
-
+            <h3 class="mb-4">Mon abonnement</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
             <ul class="ministry-list my-5">
-              <li class="active"><a href="#"><span class="ion-ios-arrow-forward mr-2"></span>Époque : Ère Victorienne</li>
-              <li class="active"><a href="#"><span class="ion-ios-arrow-forward mr-2"></span>Contexte politique et sociale</li>
-              <li class="active"><a href="#"><span class="ion-ios-arrow-forward mr-2"></span>Analyse</li>
+              <li><span class="ion-ios-arrow-forward mr-2"></span>Bible classes for all ages</li>
+              <li><span class="ion-ios-arrow-forward mr-2"></span>The Big Oxmox advised her not to do so</li>
+              <li><span class="ion-ios-arrow-forward mr-2"></span>Pointing has no control about</li>
+              <li><span class="ion-ios-arrow-forward mr-2"></span>Separated they live in Bookmarksgrove right</li>
             </ul>
             <hr>
-            <h4>Si vous avez aimé Jane Eyre, vous aimerez aussi : </h4>
-           <ul class="ministry-list my-5">
-              <!-- Faire des liens vers les pages des livres -->
-              <li><span></span>"Orgueil et Préjugés" de Jane Austen</li>
-              <li><span></span>"L'éducation sentimentale" de Gustave Flaubert</li>
-              <li><span></span>"Les Hauts des Hurlevents" de Emily Brontë</li>
-              <li><span></span>"Gatsby le Magnifique" de F. Scott Fitzgerald</li>
-            </ul>
-
-
+            <h3 class="mb-4 mt-5">The Lord's Army</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
           </div>
         </div>
       </div>
     </section>
 
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<ul class="ministry-list">
+							<li class="active"><a href="#">Youth &amp; Family</a></li>
+							<li><a href="#">Community Outreach</a></li>
+							<li><a href="#">Missions</a></li>
+						</ul>
+					</div>
+					<div class="col-md-9">
+						<h3 class="mb-4">Mon abonnement</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+						<ul class="ministry-list my-5">
+							<li><span class="ion-ios-arrow-forward mr-2"></span>Bible classes for all ages</li>
+							<li><span class="ion-ios-arrow-forward mr-2"></span>The Big Oxmox advised her not to do so</li>
+							<li><span class="ion-ios-arrow-forward mr-2"></span>Pointing has no control about</li>
+							<li><span class="ion-ios-arrow-forward mr-2"></span>Separated they live in Bookmarksgrove right</li>
+						</ul>
+						<hr>
+						<h3 class="mb-4 mt-5">The Lord's Army</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+					</div>
+				</div>
+			</div>
+		</section>
     
 <?php include '_partials/footer.php';?> 
   </body>

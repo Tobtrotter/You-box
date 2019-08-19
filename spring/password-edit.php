@@ -35,7 +35,7 @@ if(!empty($_POST)){
   $result->bindValue(':param_code', $post['input_code']);
 
 
-/* essai
+
   $sql ="UPDATE users SET password = :param_password WHERE id = :param_id";
   $result = $bdd->prepare($sql);
 
@@ -55,22 +55,6 @@ if(!empty($_POST)){
           header('Location: my-account.php');
         }  
   }
-
-  */
-
-  $sql = 'SELECT * FROM users WHERE id = :param_id';
-$res = $bdd->prepare($sql);
-$res->bindValue(':param_id', $_SESSION['user']['id'], PDO::PARAM_INT);
-$res->execute();
-
-header('Location: my-account.php');
-
-$my_user = $res->fetch();
-if(empty($my_user)){ 
-  // En théorie, peu de chance d'arriver mais au cas ou...
-  // On trouve pas d'utilisateur ayant un ID correspondant
-  header('Location: index.php');
-} 
 }
 
 }
