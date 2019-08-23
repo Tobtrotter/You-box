@@ -72,8 +72,7 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-12 text-center heading-section ftco-animate">
-            <h2 class="mb-2"><span class="px-4">Nos avantages</span></h2>
-            <span class="subheading">Nos avantages</span>
+            <h2 class="mb-2"><span class="px-4">Nos avantages</span></h2>s
           </div>
         </div>
     		<div class="row">
