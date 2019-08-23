@@ -30,7 +30,36 @@ require 'conf/config-sql.php';
                 
                 <div class="form-group">
                   <label for="formGroupExampleInput">Date d'expiration (MM/AA)</label>
-                  <input type="date" name="input_date" class="form-control" id="formGroupExampleInput"min="08/19" max="12/39">
+                  <select class="custom-select custom-select-lg mb-3">
+                  <option selected>Mois</option>
+                  <option value="1">Janvier</option>
+                  <option value="2">Février</option>
+                  <option value="3">Mars</option>
+                  <option value="1">Avril</option>
+                  <option value="2">Mai</option>
+                  <option value="3">Juin</option>
+                  <option value="1">Juillet</option>
+                  <option value="2">Août</option>
+                  <option value="3">Septembre</option>
+                  <option value="1">Octobre</option>
+                  <option value="2">Novembre</option>
+                  <option value="3">Décembre</option>
+                </select>
+                  <select class="custom-select custom-select-lg mb-3">
+                  <option selected>Année</option>
+                  <option value="1">2019</option>
+                  <option value="2">2020</option>
+                  <option value="3">2021</option>
+                  <option value="1">2022</option>
+                  <option value="2">2023</option>
+                  <option value="3">2024</option>
+                  <option value="1">2025</option>
+                  <option value="2">2026</option>
+                  <option value="3">2027</option>
+                  <option value="1">2028</option>
+                  <option value="2">2029</option>
+                  <option value="3">2030</option>
+                </select>
                 </div>
                 <div class="form-group">
                   <label for="formGroupExampleInput">Cryptogramme (CVC)</label>

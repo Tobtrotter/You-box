@@ -47,7 +47,7 @@
         <li class='pricing-feature'>Accompagnée d'un support digital afin de mieux comprendre l'oeuvre dans sa globalité</li>
        <!-- <li class='pricing-feature'></li> -->
       </ul>
-      <button href="choose-product-box1.php" class='pricing-action'> JE DÉCOUVRE </button>
+        <a href="choose-product-box1.php" class='pricing-action'> JE DÉCOUVRE </a>
     </div> 
 
     <div class='pricing-item pricing__item--featured'>
