@@ -71,7 +71,7 @@ if(!(empty($_POST))){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <h1>Étape 3 : Question lié à la Box Classique </h1>
+    <h1>Box Classique </h1>
 
     <!-- Question 1 -->
     <!-- Si on a pas l'auteur enregistrer envoyé un mail d'alerte pour créer la fiche de l'auteur-->
@@ -79,12 +79,40 @@ if(!(empty($_POST))){
         <label for="favourite_autor">Quels est votre auteur favoris ?</label>
         <input type="text" class="form-control" name="author_name" id="favourite_autor">
       </div>
+      <div class="input-group mb-3">
+        <select class="custom-select" id="inputGroup">
+          <option selected>Sélections</option>
+          <option value="1">Harer Lee</option>
+          <option value="2">Jane Austen</option>
+          <option value="3">Charlotte Brontë</option>
+          <option value="4">F.Scott Fitzgerald</option>
+          <option value="5">Margaret Atwood</option>
+          <option value="6">Mark Twain</option>
+          <option value="7">Colm Toibin</option>
+          <option value="8">Yasmina Khadra</option>
+          <option value="9">Ernest Hermingway</option>
+        </select>
+      </div>
 
     <!-- Question 2 -->
     <!-- Si on a pas le livre enregistrer envoyé un mail d'alerte pour créer la fiche du livre-->
       <div class="form-group">
         <label for="favourite_book">Quels est votre livre préférer ?</label>
         <input type="text" class="form-control" name="book_name" id="favourite_book">
+      </div>
+      <div class="input-group mb-3">
+        <select class="custom-select" id="inputGroup">
+          <option selected>Sélections</option>
+          <option value="1">Ne tirer pas sur l'oiseau moqueur</option>
+          <option value="2">Orgueil et préjugés</option>
+          <option value="3">Jane Eyre</option>
+          <option value="4">Gatsby le Magnifique</option>
+          <option value="5">La servante écarlate</option>
+          <option value="6">Les aventures de Huckleberry Finn</option>
+          <option value="7">Brooklyn</option>
+          <option value="8">Les hirondelles de Kaboul</option>
+          <option value="9">Le vieil homme et la mer</option>
+        </select>
       </div>
 
     <!-- Question 3 -->
@@ -108,41 +136,14 @@ if(!(empty($_POST))){
     <div class="input-group mb-3">
       <select class="custom-select" id="inputGroup">
         <option selected>Sélections</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="1">Roman</option>
+        <option value="2">Actualités</option>
+        <option value="3">Aventure</option>
+        <option value="4">Romantique</option>
+        <option value="5">Droit</option>
       </select>
     </div>
 
-    <!-- Question 5 -->
-    <!-- Si oui afficher une case ou la personne peu ecrire le nom de son magazines -->
-    <!-- Si on a pas le magazines enregistrer envoyé un mail d'alerte pour créer la fiche du magazines-->
-    <div class="form-group">
-      <label for="choose">Lisez vous des magazines ?</label><br>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="read_magazine" id="yes" value="option1">
-        <label class="form-check-label" for="yes">Oui</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="read_magazine" id="no" value="option2">
-        <label class="form-check-label" for="no">non</label>
-      </div>
-    </div>
-
-    <!-- Question 6 -->
-    <!-- Si oui afficher une case ou la personne peu ecrire le nom de la série -->
-    <!-- Si on a pas la serie enregistrer envoyé un mail d'alerte pour créer la fiche de la série-->
-    <div class="form-group">
-      <label for="choose">Regarder vous des série ?</label><br>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="look_serie" id="yes" value="option1">
-        <label class="form-check-label" for="yes">Oui</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="look_serie" id="no" value="option2">
-        <label class="form-check-label" for="no">non</label>
-      </div>
-    </div>
 
     <!-- Boutton -->
         <button >Envoyer</button>
