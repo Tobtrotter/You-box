@@ -40,7 +40,7 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
 
 
             <div class="mouse">
-              <a href="#" class="mouse-icon">
+              <a class="mouse-icon">
                 <div class="mouse-wheel"><span class="ion-ios-arrow-down"></span></div>
               </a>
             </div>
@@ -72,7 +72,7 @@ if(!empty($_SESSION['user']) || !empty($_COOKIE['authToken'])){
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-12 text-center heading-section ftco-animate">
-            <h2 class="mb-2"><span class="px-4">Nos avantages</span></h2>s
+            <h2 class="mb-2"><span class="px-4">Nos avantages</span></h2>
           </div>
         </div>
     		<div class="row">
