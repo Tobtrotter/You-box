@@ -10,10 +10,15 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
             <h1 class="mb-0">You Box</h1>
+<<<<<<< HEAD
             <h3 class="subheading mb-4 pb-1">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</h3>
             <p><a href="my-account.php" class="btn btn-primary py-3 px-4">Créer un compte</a> <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a></p>
+=======
+            <h3 class="subheading mb-4 pb-1">Que ce soit pour vous faire plaisir ou progresser, pour s'évader ou pour au contraire mieux comprendre l'actualité, vous trouverez forcément la box qui convient à vos attentes. Alors n'attendez plus et faites votre choix </h3>
+            <p><a href="user-add.php" class="btn btn-primary py-3 px-4">Créer un compte</a> <a href="connexion.php" class="btn btn-white py-3 px-4"><span class="icon-play-circle"></span> Se connecter</a></p>
+>>>>>>> 7e844697f4b6c62058186d13528e2688d1cd509c
             <div class="mouse">
-              <a href="#" class="mouse-icon">
+              <a class="mouse-icon">
                 <div class="mouse-wheel"><span class="ion-ios-arrow-down"></span></div>
               </a>
             </div>
@@ -45,8 +50,13 @@
         <li class='pricing-feature'>100% personnalisé</li>
        <!-- <li class='pricing-feature'></li> -->
       </ul>
+<<<<<<< HEAD
       <button class='pricing-action'> JE DÉCOUVRE </button>
     </div>
+=======
+        <a href="choose-product-box1.php" class='pricing-action'> JE DÉCOUVRE </a>
+    </div> 
+>>>>>>> 7e844697f4b6c62058186d13528e2688d1cd509c
 
     <div class='pricing-item pricing__item--featured'>
       <div class='pricing-deco'>
