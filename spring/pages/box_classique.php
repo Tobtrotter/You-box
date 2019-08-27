@@ -1,57 +1,92 @@
 <?php
-// Session qui reste ouverte
-session_start();
+$pdo = new PDO(
+  'mysql:host=localhost;dbname=site_web;',
+  'root',
+  '',
+  array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
+);
+$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
+$pre=$pdo->prepare('select * from auteur');
+$pre->execute();
+$auteurs=$pre->fetchAll(PDO::FETCH_OBJ);
+$pre=$pdo->prepare('select * from genre');
+$pre->execute();
+$genres=$pre->fetchAll(PDO::FETCH_OBJ);
+$pre=$pdo->prepare('select * from livre');
+$pre->execute();
+$livres=$pre->fetchAll(PDO::FETCH_OBJ);
+?>
 
+<form method="get" action="box_classique.php">
+  <label>Livre</label>
+  <select name="livre">
+    <option></option>
+    <?php foreach ($livres as $livre): ?>
+      <option value="<?php echo $livre->pk_livre ?>" <?php echo isset($_GET['livre']) && $_GET['livre']==$livre->pk_livre?'selected':'' ?>><?php echo $livre->nom ?></option>
+    <?php endforeach; ?>
+  </select><br>
+  <label>Genre</label>
+  <select name="genre">
+    <option></option>
+    <?php foreach ($genres as $genre): ?>
+      <option value="<?php echo $genre->pk_genre ?>" <?php echo isset($_GET['genre']) && $_GET['genre']==$genre->pk_genre?'selected':'' ?>><?php echo $genre->nom ?></option>
+    <?php endforeach; ?>
+  </select><br>
+  <label>Auteur</label>
+  <select name="auteur">
+    <option></option>
+    <?php foreach ($auteurs as $auteur): ?>
+      <option value="<?php echo $auteur->pk_auteur ?>" <?php echo isset($_GET['auteur']) && $_GET['auteur']==$auteur->pk_auteur?'selected':'' ?>><?php echo $auteur->nom ?></option>
+    <?php endforeach; ?>
+  </select><br>
+  <input type="submit"><br>
+</form>
+  <?php
+if(isset($_GET['genre'])){
+  // prendre le livre préféré
 
-$errors = array();
+  // foreach sur tous les mots clés => voir la fonction explode();
 
-if(!(empty($_POST))){
-  $post = array_map('trim', array_map('strip_tags', $_POST)); // Securise les données
+  // dans le foreach tu vas faire des like '%%' sur tous les autres livres (where pk_livre != 'livre préféré')
+  // stock pk_livre dans un tableau $livres=array();
 
-  if(empty($post['author_name'])){
-    $errors[] = 'Vous devez renseigner votre auteur';
-  }
-  if(empty($post['book_name'])){
-    $errors[] = 'Vous devez renseigner votre livre';
-  }
-  if(empty($post['choose'])){
-    $errors[] = 'Vous devez sélectionner Oui ou Non';
-  }
-  if(empty($post['genre_name'])){
-    $errors[] = 'Vous devez sélectionner votre catégorie';
-  }
-  if(empty($post['read_magazine'])){
-    $errors[] = 'Vous devez sélectionner Oui ou Non';
-  }
-  if(empty($post['look_serie'])){
-    $errors[] = 'Vous devez sélectionner Oui ou Non';
-  }
+  // genre
+  // requete sur tous les livres qui correspondent à ce genre (where pk_livre != 'livre préféré')
+  // stock pk_livre dans une variable $livre_genre=array();
 
-  if(count($errors) == 0){
-    // Enregistrement en base de données avec INSERT
-    $res = $bdd->prepare('INSERT INTO step3(author_name, book_name, choose, genre_name, read_magazine, look_serie) VALUES (:author_name, :book_name, :choose, :genre_name, :read_magazine, :look_serie)');
+  // auteur
+  // requete sur tous ses livres (where pk_livre != 'livre préféré')
+  // stock p_livre dans une variable $livre_auteur=array();
 
-    $res->bindValue(':author_name', $post['author_name'], PDO::PARAM_STR);
-    $res->bindValue(':book_name', $post['book_name']);
-    $res->bindValue(':choose', $post['choose']);
-    $res->bindValue(':genre_name', $post['genre_name']);
-    $res->bindValue(':read_magazine', $post['read_magazine']);
-    $res->bindValue(':look_serie', $post['look_serie']);
+  // compter le score de chaque pk_livre
+  // faire une requetes du meilleur livre
+  ?>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Auteur</th>
+        <th>Titre</th>
+      </tr>
+      <?php if (!isset($livres)): ?>
+        <tr>
+          <td colspan="2">Aucun livre trouvé</td>
+        </tr>
+      <?php else: ?>
+        <?php foreach ($livres as $livre): ?>
+          <tr>
+            <td><?php echo $livre->auteur_nom ?></td>
+            <td><?php echo $livre->nom ?></td>
+          </tr>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <?php
+}
+?>
 
-    // J'execute (donc ça sauvegarde)
-    $res->execute();
-
-	}
-	else {
-		// Si la vaiable $form_valid vaut "false" alors le tableau $errors contient des erreurs
-		$form_valid = false;
-	}
-
-    // Redirection
-    header('Location: step7.php');
-  }
-
- ?>
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -91,20 +126,8 @@ if(!(empty($_POST))){
         <input type="text" name="book_name" id="favourite_book" placeholder="Rentrez votre livre préférer">
       </div>
 
-    <!-- Question 3 -->
-        <div class="form-group">
-          <label for="choose">Aimeriez vous connaitre d’autres genres ?</label><br>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="choose" id="yes" value="oui">
-            <label class="form-check-label" for="yes">Oui</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="choose" id="no" value="non">
-            <label class="form-check-label" for="no">non</label>
-          </div>
-        </div>
 
-    <!-- Question 4 -->
+    <!-- Question 3 -->
     <div class="form-group">
       <label for="favourite_genres">Quelles sont vos catégories préférentielles ?</label>
       <input type="text" class="form-control" name="genres_name" id="favourite_genres">
